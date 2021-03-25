@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Dice Game</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+		<h1>Welcome to Dice Game</h1>
+		<h1></h1>
+		<div>
+			<div class="player1">
+				<h2>Player 1</h2>
+				<img>
+			</div>
+			<div class="player2">
+				<h2>Player 2</h2>
+				<img>
+			</div>
+		</div>
+		<button onclick="roll()">Roll</button>
+		<script type="text/javascript">
+			function roll() {
+				document.getElementsByTagName("img")[0].classList.add("dice");
+				document.getElementsByTagName("img")[1].classList.add("dice");
+				document.getElementsByTagName("h2")[0].classList.remove("blue");
+				document.getElementsByTagName("h2")[1].classList.remove("blue");
+
+			var num1 = Math.ceil(Math.random()*6);
+			var num2 = Math.ceil(Math.random()*6);
+			if(num1>num2) { 
+				document.getElementsByTagName("h1")[1].innerHTML = "Player 1 win";
+				document.getElementsByTagName("h2")[0].classList.add("green");
+				document.getElementsByTagName("h2")[0].classList.remove("red");
+
+				document.getElementsByTagName("h2")[1].classList.add("red");
+				document.getElementsByTagName("h2")[1].classList.remove("green");
+			}
+			else if(num1<num2)
+			{
+				document.getElementsByTagName("h1")[1].innerHTML = "Player 2 win";
+				document.getElementsByTagName("h2")[1].classList.add("green");
+				document.getElementsByTagName("h2")[1].classList.remove("red");
+
+				document.getElementsByTagName("h2")[0].classList.add("red");
+				document.getElementsByTagName("h2")[0].classList.remove("green");
+			}
+			else {
+				document.getElementsByTagName("h2")[0].classList.remove("red");
+				document.getElementsByTagName("h2")[1].classList.remove("red");
+				document.getElementsByTagName("h2")[0].classList.remove("green");
+				document.getElementsByTagName("h2")[1].classList.remove("green");
+
+				document.getElementsByTagName("h2")[0].classList.add("blue");
+				document.getElementsByTagName("h2")[1].classList.add("blue");
+				document.getElementsByTagName("h1")[1].innerHTML = "It's a TIE, Please Roll Again";
+
+			}
+			document.getElementsByTagName("img")[0].setAttribute("src", num1+".png");
+			document.getElementsByTagName("img")[1].setAttribute("src", num2+".png");
+			}
+		</script>
+	</body>
+</html>
